@@ -55,8 +55,21 @@ public class Dictionary implements ADT_Dictionary {
         if (persons[key] == null)
             persons[key] = new Person(value);
             //Если же случиась коллизия
-        else
-            persons[key] = new Person(value, persons[key]);
+        else {
+            if (!exist(persons[key], value)) {
+                persons[key] = new Person(value, persons[key]);
+            }
+        }
+    }
+
+    private boolean exist(Person person, char[] value) {
+        Person cur = person;
+        while (cur != null) {
+            if (cur.equals(value)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private Person getLast(int key) {

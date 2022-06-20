@@ -62,6 +62,8 @@ public class Dictionary implements ADT_Dictionary {
                     persons[newKey].name = new char[10];
                     persons[newKey].setName(value);
                     break;
+                } else if (persons[key].equals(value)) {
+                    return;
                 } else if (persons[newKey].isDeleted()) {
                     persons[newKey].setName(value);
                     break;
